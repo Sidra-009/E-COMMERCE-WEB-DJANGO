@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Footer Specific Styles */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-description {
+            color: #9ca3af;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 3rem;
+            height: 3rem;
+            background: #374151;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .footer-section h4 {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .payment-icons img {
+            height: 2rem;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 480px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Cartify</a>
+                    <p class="footer-description">
+                        Premium fashion and electronics marketplace offering the latest trends and cutting-edge technology with worldwide shipping and exceptional customer service.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'shop:fashion' %}">Fashion</a></li>
+                        <li><a href="{% url 'myapp:electronics' %}">Electronics</a></li>
+                        <li><a href="{% url 'myapp:home_living' %}">Home & Living</a></li>
+                        <li><a href="{% url 'myapp:beauty' %}">Beauty & Health</a></li>
+                        <li><a href="new-arrivals">New Arrivals</a></li>
+                        <li><a href="sale">Deals & Promotions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact">Contact Us</a></li>
+                        <li><a href="faq">FAQs</a></li>
+                        <li><a href="shipping">Shipping Policy</a></li>
+                        <li><a href="returns">Returns & Exchanges</a></li>
+                        <li><a href="size-guide">Size Guide</a></li>
+                        <li><a href="product-care">Product Care</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about">About Us</a></li>
+                        <li><a href="blog">Blog</a></li>
+                        <li><a href="careers">Careers</a></li>
+                        <li><a href="press">Press</a></li>
+                        <li><a href="affiliates">Affiliate Program</a></li>
+                        <li><a href="sustainability">Sustainability</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Cartify. All rights reserved.</p>
+                <div class="payment-icons">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Visa">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196561.png" alt="Mastercard">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196566.png" alt="American Express">
+                    <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="PayPal">
+                    <img src="https://cdn-icons-png.flaticon.com/512/825/825462.png" alt="Apple Pay">
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

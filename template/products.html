@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CatchItQuick - Products</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+    
+    <!-- Favicon -->
+    <link href="/static/img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
+    
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/static/lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    
+    <style>
+        :root {
+            --primary-color: #ff9900;
+            --secondary-color: #232f3e;
+            --light-color: #f2f2f2;
+            --dark-color: #131921;
+        }
+        
+        body {
+            font-family: 'Amazon Ember', Arial, sans-serif;
+            background-color: #fafafa;
+        }
+        
+        
+        .dropdown-menu {
+            background-color: var(--secondary-color);
+            border: none;
+        }
+        
+        .dropdown-item {
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e88a00;
+            border-color: #e88a00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Video Hero Section */
+        .video-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Horizontal Filter Section */
+        .horizontal-filters {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .filter-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+        
+        .filter-select {
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+        
+        .filter-checkbox {
+            margin-right: 5px;
+        }
+        
+        .filter-btn {
+            padding: 6px 15px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        #applyFilters {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+        }
+        
+        #resetFilters {
+            background-color: white;
+            border: 1px solid #ddd;
+            color: #666;
+        }
+        
+        /* Product Listing */
+        .product-header-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        #productCount {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Enhanced Product Cards */
+        .product-card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .product-image-container {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-color);
+            color: #e88a00;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .product-body {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark-color);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+        
+        .product-description {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 36px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-rating {
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            margin-top: auto;
+        }
+        
+        .btn-add-to-cart {
+            width: 100%;
+            background-color: var(--primary-color);
+            color:#e88a00 ;
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-add-to-cart:hover {
+            background-color: #e88a00;
+            transform: translateY(-2px);
+        }
+        
+        /* Quick View Modal */
+        .quick-view-modal .modal-content {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .quick-view-img {
+            max-height: 400px;
+            object-fit: contain;
+        }
+        
+        /* Pagination */
+        .pagination {
+            margin-top: 40px;
+            justify-content: center;
+        }
+        
+        .page-item {
+            margin: 0 5px;
+        }
+        
+        .page-link {
+            color: #2e2929;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+        
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+        
+        .page-item.disabled .page-link {
+            color: #999;
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    /* Add this to your existing CSS */
+    .footer {
+        background-color: #2e2929;;
+        color: white;
+    }
+    
+    .footer h2 {
+        color: white;
+    }
+    
+    .footer p,
+    .footer a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer a:hover {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .footer-social a {
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-social a:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .copyright {
+        background-color: #2e2929;; /* Slightly darker shade for contrast */
+        color: white;
+    }
+    
+    .custom-btn {
+        background-color: var(--dark-color);
+        color: white;
+    }
+    
+    .custom-btn:hover {
+        background-color: #232f3e;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+ <!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>CatchItQuick - Home</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+    
+    <!-- Favicon -->
+    <link href="/static/img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
+    
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/static/lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    
+    <style>
+        :root {
+            --primary-color: #ff9900;
+            --secondary-color: #232f3e;
+            --light-color: #f2f2f2;
+            --dark-color: #131921;
+        }
+        
+        body {
+            font-family: 'Amazon Ember', Arial, sans-serif;
+            background-color: #fafafa;
+        }
+        
+        .navbar {
+            background-color: var(--dark-color) !important;
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary-color) !important;
+            font-size: 1.8rem;
+        }
+        
+        .nav-link {
+            color: white !important;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        
+        .dropdown-menu {
+            background-color: var(--secondary-color);
+            border: none;
+        }
+        
+        .dropdown-item {
+            color:#e06512 !important;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e88a00;
+            border-color: #e88a00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Navigation Search */
+        .search-container {
+            display: flex;
+            margin-right: 15px;
+        }
+        
+        .search-input {
+            border-radius: 4px 0 0 4px;
+            border-right: none;
+            width: 200px;
+        }
+        
+        .search-btn {
+            border-radius: 0 4px 4px 0;
+            padding: 0.375rem 0.75rem;
+        }
+        
+        /* Account Dropdown */
+        .account-dropdown {
+            min-width: 200px;
+        }
+        
+        /* Video Hero Section Styles */
+        .video-hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        
+        .hero-btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 4px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Card styles */
+        .card {
+            border: none;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: contain;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        /* Category Cards */
+        .category-card {
+            height: 100%;
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            padding: 20px;
+            border-radius: 8px;
+            height: 100%;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        /* Why Choose Us */
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .video-hero {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .search-container {
+                margin: 10px 0;
+                width: 100%;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .navbar-nav.ml-auto {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+        }
+        /* Add this to your existing CSS */
+    .footer {
+        background-color: #2e2929;;
+        color: white;
+    }
+    
+    .footer h2 {
+        color: white;
+    }
+    
+    .footer p,
+    .footer a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .footer a:hover {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .footer-social a {
+        color: white;
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .footer-social a:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .copyright {
+        background-color: #2e2929;; /* Slightly darker shade for contrast */
+        color: white;
+    }
+    
+    .custom-btn {
+        background-color: var(--dark-color);
+        color: white;
+    }
+    
+    .custom-btn:hover {
+        background-color: #232f3e;
+        color: white;
+    }
+    
+    </style>
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+     <!-- Nav Bar Start -->
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a href="{% url 'index' %}" class="navbar-brand">Catch<span>It</span>Quick</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
+                    <a href="{% url 'services' %}" class="nav-item nav-link active">Services</a>
+                    <a href="{% url 'products' %}" class="nav-item nav-link">Products</a>
+                    <a href="{% url 'team' %}" class="nav-item nav-link">Our Team</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                </div>
+                    
+                    {% if user.is_authenticated %}
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right account-dropdown">
+                            {% if user.is_superuser or user.is_staff %}
+                                <a href="{% url 'admin:index' %}" class="dropdown-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                            {% else %}
+                                <a href="{% url 'dashboard' %}" class="dropdown-item"><i class="fas fa-user"></i> My Profile</a>
+                                <a href="{% url 'orders' %}" class="dropdown-item"><i class="fas fa-shopping-bag"></i> My Orders</a>
+                            {% endif %}
+                            <div class="dropdown-divider"></div>
+                            <a href="{% url 'logout' %}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    <a href="{% url 'cart' %}" class="nav-item nav-link">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                        <span class="badge badge-light ml-1">3</span>
+                    </a>
+                    {% else %}
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            <i class="fas fa-user-circle"></i> Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right account-dropdown">
+                            <a href="{% url 'login' %}" class="dropdown-item"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            <a href="{% url 'register' %}" class="dropdown-item"><i class="fas fa-user-plus"></i> Register</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav Bar End -->
+
+    <!-- Video Hero Section -->
+    <section class="video-hero">
+        <video autoplay muted loop class="video-background">
+            <source src="https://videos.pexels.com/video-files/8937991/8937991-sd_360_640_30fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+        <div class="hero-content">
+            <h2 class="display-4 text-white">Our Premium Products</h2>
+            <p>Discover amazing products at unbeatable prices</p>
+            <button class="hero-btn">Shop Now</button>
+        </div>
+    </section>
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib/easing/easing.min.js"></script>
+    <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+    <!-- Contact Javascript File -->
+    <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/static/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
+    
+    <script>
+        // Add hover effects to cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.15)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            });
+        });
+    </script>
+    
+    {% block script %}{% endblock %}
+</body>
+</html>   
+
+     <!-- Products Section -->
+    <div class="container mb-5">
+        <!-- Horizontal Filter Section -->
+        <div class="horizontal-filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <span class="filter-label">Price Range:</span>
+                    <input type="range" class="form-range" min="0" max="1000" step="10" 
+                           value="1000" id="priceRange" style="width: 150px;">
+                    <span id="priceValue">$1000</span>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">Categories:</span>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input category-check" type="checkbox" 
+                               value="electronics" id="electronicsCheck" checked>
+                        <label class="form-check-label" for="electronicsCheck">
+                            <i class="fas fa-laptop"></i> Electronics
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input category-check" type="checkbox" 
+                               value="fashion" id="fashionCheck" checked>
+                        <label class="form-check-label" for="fashionCheck">
+                            <i class="fas fa-tshirt"></i> Fashion
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input category-check" type="checkbox" 
+                               value="home" id="homeCheck" checked>
+                        <label class="form-check-label" for="homeCheck">
+                            <i class="fas fa-home"></i> Home
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">Rating:</span>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input rating-check" type="checkbox" 
+                               value="5" id="rating5Check" checked>
+                        <label class="form-check-label" for="rating5Check">
+                            <i class="fas fa-star text-warning"></i> 5
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input rating-check" type="checkbox" 
+                               value="4" id="rating4Check" checked>
+                        <label class="form-check-label" for="rating4Check">
+                            <i class="fas fa-star text-warning"></i> 4+
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input rating-check" type="checkbox" 
+                               value="3" id="rating3Check" checked>
+                        <label class="form-check-label" for="rating3Check">
+                            <i class="fas fa-star text-warning"></i> 3+
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="filter-group ml-auto">
+                    <button class="filter-btn" id="applyFilters">Apply</button>
+                    <button class="filter-btn" id="resetFilters">Reset</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Product Listing -->
+        <div class="product-header-controls">
+            <h5>Showing <span id="productCount">12</span> of 36 products</h5>
+            <div>
+                <select class="form-select" id="sortSelect">
+                    <option value="featured">Sort by: Featured</option>
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="price_desc">Price: High to Low</option>
+                    <option value="rating">Avg. Customer Review</option>
+                    <option value="newest">Newest Arrivals</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="row" id="productContainer">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+        
+        <!-- Pagination -->
+        <nav class="mt-5">
+            <ul class="pagination" id="paginationContainer">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content quick-view-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quickViewModalLabel">Product Quick View</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="" class="img-fluid quick-view-img" id="quickViewImage" alt="Product Image">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="quickViewTitle"></h3>
+                            <div class="rating mb-3" id="quickViewRating"></div>
+                            <h4 class="text-primary mb-3" id="quickViewPrice"></h4>
+                            <p id="quickViewDescription"></p>
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="input-group" style="width: 120px;">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-outline-secondary" type="button" id="quantityMinus">-</button>
+                                    </div>
+                                    <input type="text" class="form-control text-center" value="1" id="quantityInput">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="quantityPlus">+</button>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary ml-3" id="addToCartModal">Add to Cart</button>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-outline-secondary mr-2">
+                                    <i class="far fa-heart"></i> Wishlist
+                                </button>
+                                <button class="btn btn-outline-secondary">
+                                    <i class="fas fa-share-alt"></i> Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Footer Start -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="footer-contact">
+                                <h2>Our Address</h2>
+                                <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
+                                <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
+                                <p><i class="fa fa-envelope"></i>info@example.com</p>
+                                <div class="footer-social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/SachTechSol/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="footer-link">
+                                <h2>Quick Links</h2>
+                                <a href="">Terms of use</a>
+                                <a href="">Privacy policy</a>
+                                <a href="">Cookies</a>
+                                <a href="">Help</a>
+                                <a href="">FQAs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="footer-newsletter">
+                        <h2>Newsletter</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Quisque eu lectus a leo dictum nec non quam. Tortor eu placerat rhoncus, lorem quam iaculis felis, sed lacus neque id eros.
+                        </p>
+                        <div class="form">
+                            <input class="form-control" placeholder="Email goes here">
+                            <button class="btn custom-btn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright &copy; <a href="#">Catch it Quick</a>, All Right Reserved.</p>
+                <p>Designed By <a href="https://htmlcodex.com">Sidra Bibi</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib/easing/easing.min.js"></script>
+    <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
+    
+    <script>
+        // Sample product data
+        const products = [
+            {
+                id: 1,
+                title: "Wireless Bluetooth Earbuds",
+                description: "Premium noise cancellation with 30hr battery life. Perfect for music lovers and professionals.",
+                price: 59.99,
+                image: "https://m.media-amazon.com/images/I/71TPda7cwUL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.5,
+                dateAdded: "2023-05-15",
+                badge: "Bestseller"
+            },
+            {
+                id: 2,
+                title: "Smart Watch Pro",
+                description: "Fitness tracker with heart rate monitor, GPS and 7-day battery life. Stay connected on the go.",
+                price: 129.99,
+                image: "https://m.media-amazon.com/images/I/61L5QgPvgqL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.2,
+                dateAdded: "2023-06-20",
+                badge: "New"
+            },
+            {
+                id: 3,
+                title: "Portable Bluetooth Speaker",
+                description: "Waterproof with 20hr playtime. Perfect for outdoor adventures and parties.",
+                price: 39.99,
+                image: "https://m.media-amazon.com/images/I/71w3oJ7aWyL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.8,
+                dateAdded: "2023-04-10"
+            },
+            {
+                id: 4,
+                title: "Fast Wireless Charger",
+                description: "Qi-certified 15W fast charging pad for all compatible devices.",
+                price: 24.99,
+                image: "https://m.media-amazon.com/images/I/71WkDp--uqL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.3,
+                dateAdded: "2023-07-05"
+            },
+            {
+                id: 5,
+                title: "Ultra Slim Laptop",
+                description: "14\" FHD display, 8GB RAM, 256GB SSD. Lightweight and powerful for work and play.",
+                price: 699.99,
+                image: "https://m.media-amazon.com/images/I/71an9eiBxpL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.1,
+                dateAdded: "2023-03-12"
+            },
+            {
+                id: 6,
+                title: "Smartphone X Pro",
+                description: "6.5\" AMOLED display, 128GB storage, Triple Camera system with night mode.",
+                price: 899.99,
+                image: "https://m.media-amazon.com/images/I/61BGE6iu4AL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.6,
+                dateAdded: "2023-08-01",
+                badge: "Limited"
+            },
+            {
+                id: 7,
+                title: "Men's Casual T-Shirt",
+                description: "100% cotton comfortable t-shirt available in multiple colors and sizes.",
+                price: 19.99,
+                image: "https://m.media-amazon.com/images/I/61-jBuhtgZL._AC_UL320_.jpg",
+                category: "fashion",
+                rating: 4.0,
+                dateAdded: "2023-06-15"
+            },
+            {
+                id: 8,
+                title: "Women's Running Shoes",
+                description: "Lightweight running shoes with cushioned soles for maximum comfort.",
+                price: 79.99,
+                image: "https://m.media-amazon.com/images/I/71KjQbQfRmL._AC_UL320_.jpg",
+                category: "fashion",
+                rating: 4.7,
+                dateAdded: "2023-07-22",
+                badge: "Popular"
+            },
+            {
+                id: 9,
+                title: "Stainless Steel Cookware Set",
+                description: "10-piece cookware set with durable stainless steel construction.",
+                price: 149.99,
+                image: "https://m.media-amazon.com/images/I/71MJT2L1UkL._AC_UL320_.jpg",
+                category: "home",
+                rating: 4.4,
+                dateAdded: "2023-05-30"
+            },
+            {
+                id: 10,
+                title: "Robot Vacuum Cleaner",
+                description: "Smart vacuum with app control, automatic charging and powerful suction.",
+                price: 249.99,
+                image: "https://m.media-amazon.com/images/I/61DdX7U2YjL._AC_UL320_.jpg",
+                category: "home",
+                rating: 4.5,
+                dateAdded: "2023-08-10",
+                badge: "Deal"
+            },
+            {
+                id: 11,
+                title: "Air Fryer Oven",
+                description: "8-in-1 air fryer with digital display and multiple cooking functions.",
+                price: 89.99,
+                image: "https://m.media-amazon.com/images/I/71xM+ZxJQDL._AC_UL320_.jpg",
+                category: "home",
+                rating: 4.2,
+                dateAdded: "2023-04-18"
+            },
+            {
+                id: 12,
+                title: "Wireless Gaming Mouse",
+                description: "High precision gaming mouse with customizable buttons and RGB lighting.",
+                price: 49.99,
+                image: "https://m.media-amazon.com/images/I/61D1G3Qa0iL._AC_UL320_.jpg",
+                category: "electronics",
+                rating: 4.3,
+                dateAdded: "2023-07-30"
+            }
+        ];
+
+        // DOM elements
+        const productContainer = document.getElementById('productContainer');
+        const priceRange = document.getElementById('priceRange');
+        const priceValue = document.getElementById('priceValue');
+        const productCount = document.getElementById('productCount');
+        const sortSelect = document.getElementById('sortSelect');
+        const quickViewModal = new bootstrap.Modal(document.getElementById('quickViewModal'));
+        const loadingOverlay = document.querySelector('.loading-overlay');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts(products);
+            
+            // Set up event listeners
+            priceRange.addEventListener('input', updatePriceValue);
+            document.getElementById('applyFilters').addEventListener('click', applyFilters);
+            document.getElementById('resetFilters').addEventListener('click', resetFilters);
+            sortSelect.addEventListener('change', applyFilters);
+            
+            // Quick view modal quantity controls
+            document.getElementById('quantityPlus').addEventListener('click', function() {
+                const quantityInput = document.getElementById('quantityInput');
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+            });
+            
+            document.getElementById('quantityMinus').addEventListener('click', function() {
+                const quantityInput = document.getElementById('quantityInput');
+                if (parseInt(quantityInput.value) > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                }
+            });
+        });
+
+        // Update price value display
+        function updatePriceValue() {
+            priceValue.textContent = '$' + this.value;
+        }
+
+        // Apply all filters and sorting
+        function applyFilters() {
+            showLoading();
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                const maxPrice = parseInt(priceRange.value);
+                const selectedCategories = Array.from(document.querySelectorAll('.category-check:checked')).map(el => el.value);
+                const selectedRatings = Array.from(document.querySelectorAll('.rating-check:checked')).map(el => parseInt(el.value));
+                const sortOption = sortSelect.value;
+                
+                // Filter products
+                let filteredProducts = products.filter(product => {
+                    // Price filter
+                    if (product.price > maxPrice) return false;
+                    
+                    // Category filter
+                    if (!selectedCategories.includes(product.category)) return false;
+                    
+                    // Rating filter
+                    if (selectedRatings.length > 0) {
+                        const meetsRating = selectedRatings.some(rating => product.rating >= rating);
+                        if (!meetsRating) return false;
+                    }
+                    
+                    return true;
+                });
+                
+                // Sort products
+                filteredProducts = sortProducts(filteredProducts, sortOption);
+                
+                // Update product count
+                productCount.textContent = filteredProducts.length;
+                
+                // Render filtered products
+                renderProducts(filteredProducts);
+                
+                hideLoading();
+            }, 500);
+        }
+
+        // Sort products based on selected option
+        function sortProducts(products, sortOption) {
+            switch(sortOption) {
+                case 'price_asc':
+                    return [...products].sort((a, b) => a.price - b.price);
+                case 'price_desc':
+                    return [...products].sort((a, b) => b.price - a.price);
+                case 'rating':
+                    return [...products].sort((a, b) => b.rating - a.rating);
+                case 'newest':
+                    return [...products].sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                default:
+                    return products;
+            }
+        }
+
+        // Reset all filters
+        function resetFilters() {
+            priceRange.value = 1000;
+            priceValue.textContent = '$1000';
+            
+            document.querySelectorAll('.category-check').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            
+            document.querySelectorAll('.rating-check').forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            
+            sortSelect.value = 'featured';
+            
+            applyFilters();
+        }
+
+        // Render products to the page
+        function renderProducts(productsToRender) {
+            productContainer.innerHTML = '';
+           
+            if (productsToRender.length === 0)
+                       if (productsToRender.length === 0) {
+                productContainer.innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <h4>No products found matching your criteria</h4>
+                        <p>Try adjusting your filters to see more products</p>
+                    </div>
+                `;
+                return;
+            }
+
+            productsToRender.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'col-lg-3 col-md-4 col-sm-6 mb-4';
+                productCard.innerHTML = `
+                    <div class="card product-card h-100">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        <div class="product-image-container">
+                            <img src="${product.image}" class="product-image" alt="${product.title}">
+                        </div>
+                        <div class="product-body">
+                            <h5 class="product-title">${product.title}</h5>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-rating">
+                                ${renderRatingStars(product.rating)}
+                                <small class="text-muted">(${product.rating.toFixed(1)})</small>
+                            </div>
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <div class="product-actions">
+                                <button class="btn btn-add-to-cart" onclick="addToCart(${product.id})">
+                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-sm btn-link mt-2" onclick="showQuickView(${product.id})">
+                                    Quick View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                productContainer.appendChild(productCard);
+            });
+        }
+
+        // Render rating stars
+        function renderRatingStars(rating) {
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            let stars = '';
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star text-warning"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt text-warning"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star text-warning"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Show quick view modal
+        function showQuickView(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            document.getElementById('quickViewImage').src = product.image;
+            document.getElementById('quickViewTitle').textContent = product.title;
+            document.getElementById('quickViewPrice').textContent = `$${product.price.toFixed(2)}`;
+            document.getElementById('quickViewDescription').textContent = product.description;
+            document.getElementById('quickViewRating').innerHTML = renderRatingStars(product.rating) + 
+                ` <small class="text-muted">(${product.rating.toFixed(1)})</small>`;
+            
+            quickViewModal.show();
+        }
+
+        // Add to cart function
+        function addToCart(productId) {
+            showLoading();
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Product added to cart!');
+                hideLoading();
+            }, 500);
+        }
+
+        // Show loading overlay
+        function showLoading() {
+            loadingOverlay.style.display = 'flex';
+        }
+
+        // Hide loading overlay
+        function hideLoading() {
+            loadingOverlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Navbar Specific Styles */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-banner {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            text-align: center;
+            padding: 0.3rem; /* Reduced from 0.5rem */
+            font-size: 0.75rem; /* Reduced from 0.875rem */
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 0; /* Reduced from 1rem 0 */
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem; /* Reduced from 2rem */
+            font-weight: bold;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            margin: 0 1.5rem; /* Reduced from 2rem */
+        }
+
+        .nav-categories {
+            display: flex;
+            gap: 1rem; /* Reduced from 1.5rem */
+        }
+
+        .nav-category {
+            position: relative;
+            padding: 0.3rem 0; /* Reduced from 0.5rem 0 */
+            font-weight: 500;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-category a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 0.9rem; /* Added to reduce font size */
+        }
+
+        .nav-category:hover {
+            color: #4f46e5;
+        }
+
+        .nav-category:hover a {
+            color: #4f46e5;
+        }
+
+        .dropdown-indicator {
+            margin-left: 0.25rem;
+            font-size: 0.6rem; /* Reduced from 0.7rem */
+            transition: transform 0.2s;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 0.75rem;
+            padding: 0.8rem; /* Reduced from 1rem */
+            min-width: 220px; /* Reduced from 240px */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem; /* Reduced from 0.5rem */
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.4rem; /* Reduced from 0.5rem */
+            text-decoration: none;
+            color: #374151;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+            font-size: 0.85rem; /* Reduced from 0.9rem */
+        }
+
+        .dropdown a:hover {
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 600px;
+            margin-left: 1.5rem; /* Reduced from 2rem */
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem; /* Reduced from 0.75rem 1rem */
+            border: 2px solid #e5e7eb;
+            border-radius: 2rem;
+            font-size: 0.85rem; /* Reduced from 0.875rem */
+            transition: border-color 0.2s;
+            padding-right: 2.5rem; /* Reduced from 3rem */
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #6b7280;
+            transition: all 0.2s;
+            font-size: 0.9rem; /* Reduced from 1rem */
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* Reduced from 1rem */
+        }
+
+        .nav-btn {
+            padding: 0.4rem 0.8rem; /* Reduced from 0.5rem 1rem */
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem; /* Reduced from 0.5rem */
+            color: #374151;
+            font-weight: 500;
+            font-size: 0.9rem; /* Added to reduce font size */
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -0.4rem; /* Reduced from -0.5rem */
+            right: -0.4rem; /* Reduced from -0.5rem */
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            border-radius: 50%;
+            width: 1.1rem; /* Reduced from 1.25rem */
+            height: 1.1rem; /* Reduced from 1.25rem */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem; /* Reduced from 0.75rem */
+            font-weight: bold;
+        }
+
+        .account-dropdown {
+            position: relative;
+        }
+
+        .account-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 0.75rem;
+            padding: 0.8rem; /* Reduced from 1rem */
+            min-width: 180px; /* Reduced from 200px */
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            z-index: 50;
+        }
+
+        .account-menu a {
+            display: block;
+            padding: 0.4rem; /* Reduced from 0.5rem */
+            text-decoration: none;
+            color: #374151;
+            border-radius: 0.375rem;
+            transition: all 0.2s;
+            font-size: 0.85rem; /* Added to reduce font size */
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.3rem; /* Reduced from 1.5rem */
+            cursor: pointer;
+            color: #374151;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .nav-categories {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 0.8rem; /* Reduced from 1rem */
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                flex-direction: column;
+            }
+            
+            .nav-categories.active {
+                display: flex;
+            }
+            
+            .nav-category {
+                padding: 0.5rem 0; /* Reduced from 0.75rem 0 */
+            }
+            
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                padding: 0.4rem 0 0 1rem; /* Reduced padding */
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .nav-category.active .dropdown {
+                max-height: 500px;
+            }
+            
+            .search-bar {
+                margin: 0 0.8rem; /* Reduced from 1rem */
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                margin: 0;
+            }
+            
+            .search-bar {
+                margin-left: 0.8rem; /* Reduced from 1rem */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="top-banner">
+            ✨ Free shipping on orders over $75 | 📞 24/7 Support | 🔒 Secure Checkout | 🚚 Express Delivery
+        </div>
+        
+        <div class="container">
+            <nav class="nav-main">
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <a href="{% url 'shop:home' %}" class="logo">Cartify</a>
+                
+                <div class="nav-container">
+                    <div class="nav-categories">
+                        <div class="nav-category">
+                            <a href="{% url 'shop:fashion' %}">Fashion <span class="dropdown-indicator">▼</span></a>
+                            <div class="dropdown">
+                                <a href="{% url 'shop:mens_clothing' %}">Men's Clothing</a>
+                                <a href="{% url 'shop:womens_clothing' %}">Women's Clothing</a>
+                                <a href="{% url 'shop:shoes' %}">Shoes</a>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-category">
+                            <a href="{% url 'myapp:electronics' %}">Electronics <span class="dropdown-indicator">▼</span></a>
+                            <div class="dropdown">
+                                <a href="{% url 'myapp:laptops' %}">Laptops</a>
+                                <a href="{% url 'myapp:camera' %}">Camera</a>
+                                <a href="{% url 'myapp:smart_phones' %}">Smart Phones</a>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-category">
+                            <a href="{% url 'myapp:home_living' %}">Home & Living <span class="dropdown-indicator">▼</span></a>
+                            <div class="dropdown">
+                                <a href="{% url 'myapp:furniture' %}">Furniture</a>
+                                <a href="{% url 'myapp:kitchen' %}">Kitchen</a>
+                                <a href="{% url 'myapp:bedding' %}">Bedding</a>
+                            </div>
+                        </div>
+                        
+                        <div class="nav-category">
+                            <a href="{% url 'myapp:beauty' %}">Beauty & Health <span class="dropdown-indicator">▼</span></a>
+                            <div class="dropdown">
+                                <a href="{% url 'myapp:skincare' %}">Skincare</a>
+                                <a href="{% url 'myapp:makeup' %}">Makeup</a>
+                                <a href="{% url 'myapp:haircare' %}">Haircare</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Search for products...">
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="account-dropdown">
+                        <button class="nav-btn" id="login-btn">
+                            <i class="far fa-user"></i>
+                            <span>Account</span>
+                        </button>
+                        <div class="account-menu">
+                            <a href="login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                            <a href="register"><i class="fas fa-user-plus"></i> Register</a>
+                        </div>
+                    </div>
+                    <button class="nav-btn" id="cart-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart</span>
+                        <span class="cart-badge">3</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navCategories = document.querySelector('.nav-categories');
+        
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navCategories.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-categories') && !e.target.closest('.mobile-menu-btn')) {
+                navCategories.classList.remove('active');
+            }
+        });
+        
+        // Dropdown functionality for desktop
+        if (window.innerWidth > 1024) {
+            document.querySelectorAll('.nav-category').forEach(category => {
+                category.addEventListener('mouseenter', () => {
+                    const dropdown = category.querySelector('.dropdown');
+                    if (dropdown) {
+                        dropdown.style.opacity = '1';
+                        dropdown.style.visibility = 'visible';
+                        dropdown.style.transform = 'translateY(0)';
+                    }
+                });
+                
+                category.addEventListener('mouseleave', () => {
+                    const dropdown = category.querySelector('.dropdown');
+                    if (dropdown) {
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.transform = 'translateY(-10px)';
+                    }
+                });
+            });
+        } else {
+            // For mobile, toggle dropdown on click
+            document.querySelectorAll('.nav-category').forEach(category => {
+                const link = category.querySelector('a');
+                
+                link.addEventListener('click', (e) => {
+                    if (category.querySelector('.dropdown')) {
+                        e.preventDefault();
+                        category.classList.toggle('active');
+                        
+                        // Close other open dropdowns
+                        document.querySelectorAll('.nav-category').forEach(otherCategory => {
+                            if (otherCategory !== category && otherCategory.classList.contains('active')) {
+                                otherCategory.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Account dropdown functionality
+        const accountDropdown = document.querySelector('.account-dropdown');
+        const accountMenu = document.querySelector('.account-menu');
+        const loginBtn = document.getElementById('login-btn');
+        
+        if (window.innerWidth > 768) {
+            accountDropdown.addEventListener('mouseenter', () => {
+                accountMenu.style.opacity = '1';
+                accountMenu.style.visibility = 'visible';
+                accountMenu.style.transform = 'translateY(0)';
+            });
+            
+            accountDropdown.addEventListener('mouseleave', () => {
+                accountMenu.style.opacity = '0';
+                accountMenu.style.visibility = 'hidden';
+                accountMenu.style.transform = 'translateY(-10px)';
+            });
+        } else {
+            loginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                accountMenu.style.opacity = '1';
+                accountMenu.style.visibility = 'visible';
+                accountMenu.style.transform = 'translateY(0)';
+            });
+        }
+    </script>
+</body>
+</html>

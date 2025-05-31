@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Collection | Premium Fashion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+            --danger-color: #d63031;
+            --warning-color: #fdcb6e;
+            --info-color: #0984e3;
+            --text-dark: #2d3748;
+            --text-light: #f8fafc;
+            --text-muted: #718096;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+            --transition-base: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-slow: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Banner Section */
+        .banner-section {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .banner-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .banner-content {
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .banner-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .banner-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .banner-btn {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-base);
+            display: inline-block;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(108, 92, 231, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(108, 92, 231, 0);
+            }
+        }
+
+        .banner-btn:hover {
+            background: linear-gradient(45deg, var(--dark-color), var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            animation: none;
+        }
+
+        /* Filter/Sort Bar */
+        .filter-bar {
+            background: white;
+            padding: 15px 0;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-md);
+            font-family: inherit;
+            background: white;
+            min-width: 150px;
+            transition: var(--transition-base);
+        }
+
+        .filter-select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 1400px) {
+            .product-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardEntrance 0.5s ease-out forwards;
+            cursor: pointer;
+        }
+
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+
+        .product-card:hover {
+            transform: translateY(-5px) rotateY(5deg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 3px 10px;
+            border-radius: var(--border-radius-full);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: white;
+            z-index: 2;
+            animation: badgePulse 2s infinite;
+        }
+
+        @keyframes badgePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .badge-new {
+            background: var(--info-color);
+        }
+
+        .badge-sale {
+            background: var(--danger-color);
+        }
+
+        .badge-bestseller {
+            background: var(--success-color);
+        }
+
+        .badge-trending {
+            background: var(--warning-color);
+            color: var(--dark-color);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-base);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-details {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .discount {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--danger-color);
+            background: rgba(255, 117, 140, 0.1);
+            padding: 2px 6px;
+            border-radius: var(--border-radius-full);
+        }
+
+        .product-rating {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 0.8rem;
+        }
+
+        .rating-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(45deg, var(--dark-color), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--border-radius-full);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* See All/Less Button */
+        .see-more-btn {
+            display: block;
+            width: 150px;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+            text-align: center;
+        }
+
+        .see-more-btn:hover {
+            background: linear-gradient(45deg, var(--dark-color), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Product Modal */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-slow);
+        }
+
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(50px);
+            transition: var(--transition-slow);
+            position: relative;
+        }
+
+        .product-modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: var(--danger-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 992px) {
+            .modal-body {
+                flex-direction: row;
+            }
+        }
+
+        .modal-images {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: var(--border-radius-md);
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition-base);
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--primary-color);
+        }
+
+        .modal-details {
+            flex: 1;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .modal-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .modal-original-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: var(--text-muted);
+            margin-right: 10px;
+        }
+
+        .modal-discount {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--danger-color);
+            background: rgba(255, 117, 140, 0.1);
+            padding: 3px 8px;
+            border-radius: var(--border-radius-full);
+        }
+
+        .modal-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .modal-stars {
+            color: #ffc107;
+        }
+
+        .modal-reviews {
+            color: var(--text-muted);
+        }
+
+        .modal-description {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .modal-features {
+            margin-bottom: 25px;
+        }
+
+        .modal-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .modal-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-btn {
+            padding: 12px 25px;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            flex: 1;
+        }
+
+        .modal-btn-primary:hover {
+            background: linear-gradient(45deg, var(--dark-color), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .modal-btn-secondary {
+            background: white;
+            color: var(--dark-color);
+            border: 1px solid #ddd;
+        }
+
+        .modal-btn-secondary:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .banner-title {
+                font-size: 2.5rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-price {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-section {
+                height: 400px;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-body {
+                flex-direction: column;
+            }
+
+            .main-image {
+                height: 300px;
+            }
+
+            .modal-actions {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .banner-section {
+                height: 300px;
+            }
+            
+            .banner-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .modal-details {
+                padding: 20px;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% { background-position: -468px 0; }
+            100% { background-position: 468px 0; }
+        }
+
+        .skeleton {
+            animation: shimmer 1.5s infinite linear;
+            background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+            background-size: 800px 104px;
+            position: relative;
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: linear-gradient(45deg, var(--dark-color), var(--primary-color));
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <!-- Video Banner Section -->
+    <section class="banner-section">
+        <video autoplay muted loop class="banner-video">
+            <source src="https://videos.pexels.com/video-files/7680123/7680123-sd_960_506_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="banner-overlay">
+            <div class="banner-content">
+                <h1 class="banner-title">Men's Collection</h1>
+                <p class="banner-subtitle">Discover premium fashion for the modern gentleman. Handcrafted with excellence, designed for comfort.</p>
+                <a href="#trending" class="banner-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Filter/Sort Bar -->
+        <div class="filter-bar">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <span class="filter-label">Sort By:</span>
+                    <select class="filter-select" id="sort-by">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <span class="filter-label">Filter By:</span>
+                    <select class="filter-select" id="filter-category">
+                        <option value="all">All Categories</option>
+                        <option value="jeans">Jeans</option>
+                        <option value="shirts">Shirts</option>
+                        <option value="suits">Suits</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                    
+                    <select class="filter-select" id="filter-price">
+                        <option value="all">All Prices</option>
+                        <option value="0-50">Under $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-200">$100 - $200</option>
+                        <option value="200+">$200+</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trending Products -->
+        <section id="trending">
+            <div class="section-header">
+                <h2 class="section-title">Trending Now</h2>
+                <p class="section-subtitle">Discover our most popular items this season</p>
+            </div>
+            <div class="product-grid" id="trending-products">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            <button class="see-more-btn" data-section="trending">See All</button>
+        </section>
+
+        <!-- New Arrivals -->
+        <section id="new-arrivals">
+            <div class="section-header">
+                <h2 class="section-title">New Arrivals</h2>
+                <p class="section-subtitle">Fresh styles just added to our collection</p>
+            </div>
+            <div class="product-grid" id="new-arrivals-products">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            <button class="see-more-btn" data-section="new-arrivals">See All</button>
+        </section>
+
+        <!-- Bestsellers -->
+        <section id="bestsellers">
+            <div class="section-header">
+                <h2 class="section-title">Bestsellers</h2>
+                <p class="section-subtitle">Customer favorites that never go out of style</p>
+            </div>
+            <div class="product-grid" id="bestseller-products">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            <button class="see-more-btn" data-section="bestsellers">See All</button>
+        </section>
+
+        <!-- Featured Collection -->
+        <section id="featured">
+            <div class="section-header">
+                <h2 class="section-title">Featured Collection</h2>
+                <p class="section-subtitle">Curated selection of our finest products</p>
+            </div>
+            <div class="product-grid" id="featured-products">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+            <button class="see-more-btn" data-section="featured">See All</button>
+        </section>
+    </div>
+    {% include 'footer.html' %}
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Product Data (expanded with more products and descriptions)
+        const products = [
+            // Jeans (10 items)
+            { 
+                id: 1, 
+                title: "Slim Fit Denim Jeans", 
+                price: 59.99, 
+                originalPrice: 79.99, 
+                category: "jeans", 
+                rating: 4.5, 
+                reviews: 128, 
+                badge: "trending", 
+                image: "https://th.bing.com/th/id/OIP.85MUoUQNgl4IFmxwvOFD2AHaJ3?rs=1&pid=ImgDetMain", 
+                dateAdded: "2023-05-15", 
+                sales: 342,
+                description: "These slim fit denim jeans are crafted from premium cotton with just the right amount of stretch for all-day comfort. The modern slim fit through the thigh and leg provides a tailored look that's perfect for any occasion.",
+                features: [
+                    "98% Cotton, 2% Elastane for stretch",
+                    "Slim fit through thigh and leg",
+                    "Mid-rise waist",
+                    "Five-pocket styling",
+                ],
+                images: [
+                    "https://www.bing.com/images/search?view=detailV2&ccid=BYfUFKVV&id=AB3CF99666A0F9B3933591AE0458EFD5D41D97BF&thid=OIP.BYfUFKVVANZXrdrqKAUDmgHaLH&mediaurl=https%3A%2F%2Fmedia.boohoo.com%2Fi%2Fboohoo%2Fbmm39826_light%2520grey_xl%3Fw%3D900%26qlt%3Ddefault%26fmt.jp2.qlt%3D70%26fmt%3Dauto%26sm%3Dfit&cdnurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.0587d414a55500d657addaea2805039a%3Frik%3Dv5cd1NXvWASukQ%26pid%3DImgRaw%26r%3D0&exph=1350&expw=900&q=mens+jeans&form=IRPRST&ck=7F31C42909BABEF2249686D98C8153F0&selectedindex=1&itb=0&cw=1145&ch=535&ajaxhist=0&ajaxserp=0&cit=ccid_X3UqVEHH*cp_7D8A07BE88D31E66920726AA269F66F4*mid_AB3CF99666A0F9B39335965E99679AFF846570B2*simid_608048240713218518*thid_OIP.X3UqVEHHFg5--nLXiQbiowHaLH&vt=2",
+                    "https://th.bing.com/th/id/OIP.gu2VShV23Ck_6Aw4zzc09QAAAA?pid=ImgDet&w=178&h=237&c=7&dpr=1.5",
+                    "https://th.bing.com/th/id/OIP.BYfUFKVVANZXrdrqKAUDmgHaLH?pid=ImgDet&w=178&h=267&c=7&dpr=1.5"
+                ]
+            },
+                        { 
+                id: 1, 
+                title: "Slim Fit Denim Jeans", 
+                price: 59.99, 
+                originalPrice: 79.99, 
+                category: "jeans", 
+                rating: 4.5, 
+                reviews: 128, 
+                badge: "trending", 
+                image: "https://th.bing.com/th/id/OIP.85MUoUQNgl4IFmxwvOFD2AHaJ3?rs=1&pid=ImgDetMain", 
+                dateAdded: "2023-05-15", 
+                sales: 342,
+                description: "These slim fit denim jeans are crafted from premium cotton with just the right amount of stretch for all-day comfort. The modern slim fit through the thigh and leg provides a tailored look that's perfect for any occasion.",
+                features: [
+                    "98% Cotton, 2% Elastane for stretch",
+                    "Slim fit through thigh and leg",
+                    "Mid-rise waist",
+                    "Five-pocket styling",
+                ],
+                images: [
+                    "https://www.bing.com/images/search?view=detailV2&ccid=BYfUFKVV&id=AB3CF99666A0F9B3933591AE0458EFD5D41D97BF&thid=OIP.BYfUFKVVANZXrdrqKAUDmgHaLH&mediaurl=https%3A%2F%2Fmedia.boohoo.com%2Fi%2Fboohoo%2Fbmm39826_light%2520grey_xl%3Fw%3D900%26qlt%3Ddefault%26fmt.jp2.qlt%3D70%26fmt%3Dauto%26sm%3Dfit&cdnurl=https%3A%2F%2Fth.bing.com%2Fth%2Fid%2FR.0587d414a55500d657addaea2805039a%3Frik%3Dv5cd1NXvWASukQ%26pid%3DImgRaw%26r%3D0&exph=1350&expw=900&q=mens+jeans&form=IRPRST&ck=7F31C42909BABEF2249686D98C8153F0&selectedindex=1&itb=0&cw=1145&ch=535&ajaxhist=0&ajaxserp=0&cit=ccid_X3UqVEHH*cp_7D8A07BE88D31E66920726AA269F66F4*mid_AB3CF99666A0F9B39335965E99679AFF846570B2*simid_608048240713218518*thid_OIP.X3UqVEHHFg5--nLXiQbiowHaLH&vt=2",
+                    "https://th.bing.com/th/id/OIP.gu2VShV23Ck_6Aw4zzc09QAAAA?pid=ImgDet&w=178&h=237&c=7&dpr=1.5",
+                    "https://th.bing.com/th/id/OIP.BYfUFKVVANZXrdrqKAUDmgHaLH?pid=ImgDet&w=178&h=267&c=7&dpr=1.5"
+                ]
+          },
+            { 
+                id: 3, 
+                title: "Lee Regular Fit Jeans", 
+                price: 69.99, 
+                category: "jeans", 
+                rating: 4.3, 
+                reviews: 156, 
+                badge: "new", 
+                image: "https://products.blains.com/600/152/1528159-5.webp", 
+                dateAdded: "2023-07-10", 
+                sales: 189,
+                description: "Edgy distressed denim jeans with strategic rips and tears for a rugged, lived-in look. The relaxed fit provides maximum comfort while maintaining a stylish appearance.",
+                features: [
+                    "100% Cotton denim",
+                    "Relaxed fit",
+                    "Mid-rise waist",
+                    "Distressed detailing",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://products.blains.com/100/152/1528159-3.webp",
+                    "https://products.blains.com/100/152/1528159-4.webp",
+                    "https://products.blains.com/100/152/1528159-2.webp"
+                ]
+            },
+            { 
+                id: 4, 
+                title: "Classic Straight Jeans", 
+                price: 54.99, 
+                category: "jeans", 
+                rating: 4.7, 
+                reviews: 210, 
+                badge: "bestseller", 
+                image: "Men's Extreme Motion Straight Tapered Jeans", 
+                dateAdded: "2023-04-05", 
+                sales: 425,
+                description: "Timeless straight-leg jeans that offer a comfortable fit through the seat and thigh with a straight leg opening. The perfect balance between relaxed and tailored.",
+                features: [
+                    "100% Cotton denim",
+                    "Straight leg fit",
+                    "Mid-rise waist",
+                ],
+                images: [
+                    "https://products.blains.com/100/141/1417378-3.webp",
+                    "https://products.blains.com/100/141/1417378-2.webp",
+                    "https://products.blains.com/100/141/1417378-2.webp"
+            ]
+            },
+             { 
+                id: 5, 
+                title: " Legendary Regular Fit Bootcut Jeans", 
+                price: 59.99, 
+                originalPrice: 79.99, 
+                category: "jeans", 
+                rating: 4.5, 
+                reviews: 128, 
+                badge: "trending", 
+                image: "https://products.blains.com/600/155/1555181.webp", 
+                dateAdded: "2023-05-15", 
+                sales: 342,
+                description: "These slim fit denim jeans are crafted from premium cotton with just the right amount of stretch for all-day comfort. The modern slim fit through the thigh and leg provides a tailored look that's perfect for any occasion.",
+                features: [
+                    "98% Cotton, 2% Elastane for stretch",
+                    "Slim fit through thigh and leg",
+                    "Mid-rise waist",
+                    "Five-pocket styling",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://products.blains.com/100/155/1555181-3.webp",
+                    "https://products.blains.com/100/155/1555181-2.webp",
+                    "https://products.blains.com/100/155/1555181.webp"
+                ]
+            },
+            { 
+                id: 6, 
+                title: "Extreme Motion Bootcut Jeans", 
+                price: 49.99, 
+                originalPrice: 69.99, 
+                category: "jeans", 
+                rating: 4.2, 
+                reviews: 95, 
+                badge: "sale", 
+                image: "https://products.blains.com/600/152/1528090.webp", 
+                dateAdded: "2023-06-20", 
+                sales: 278,
+                description: "Classic black skinny jeans with a comfortable stretch fabric that moves with you. Perfect for creating sleek, monochromatic looks or pairing with bold colors.",
+                features: [
+                    "95% Cotton, 5% Elastane",
+                    "Skinny fit throughout",
+                    "Low-rise waist"
+                ],
+                images: [
+                    "https://products.blains.com/100/152/1528090-5.webp",
+                    "https://products.blains.com/100/152/1528090-4.webp",
+                    "https://products.blains.com/100/152/1528090-3.webp"
+                ]
+            },
+            { 
+                id:7 , 
+                title: "Distressed Denim Jeans", 
+                price: 69.99, 
+                category: "jeans", 
+                rating: 4.3, 
+                reviews: 156, 
+                badge: "new", 
+                image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=600&fit=crop", 
+                dateAdded: "2023-07-10", 
+                sales: 189,
+                description: "Edgy distressed denim jeans with strategic rips and tears for a rugged, lived-in look. The relaxed fit provides maximum comfort while maintaining a stylish appearance.",
+                features: [
+                    "100% Cotton denim",
+                    "Relaxed fit",
+                    "Mid-rise waist",
+                    "Distressed detailing",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 7, 
+                title: "M4 Relaxed Adkins Boot Cut Jeans", 
+                price: 54.99, 
+                category: "jeans", 
+                rating: 4.7, 
+                reviews: 210, 
+                badge: "bestseller", 
+                image: "https://products.blains.com/600/136/1362501.webp", 
+                dateAdded: "2023-04-05", 
+                sales: 425,
+                description: "Timeless straight-leg jeans that offer a comfortable fit through the seat and thigh with a straight leg opening. The perfect balance between relaxed and tailored.",
+                features: [
+                    "100% Cotton denim",
+                    "Classic five-pocket styling",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://products.blains.com/100/136/1362501-2.webp",
+                    "https://products.blains.com/100/136/1362501-3.webp",
+                    "https://products.blains.com/100/136/1362501-4.webp"
+                ]
+            },
+             { 
+                id: 8, 
+                title: "Regular Fit Straight Leg", 
+                price: 59.99, 
+                originalPrice: 79.99, 
+                category: "jeans", 
+                rating: 4.5, 
+                reviews: 128, 
+                badge: "trending", 
+                image: "https://products.blains.com/600/125/1255482.webp", 
+                dateAdded: "2023-05-15", 
+                sales: 342,
+                description: "These slim fit denim jeans are crafted from premium cotton with just the right amount of stretch for all-day comfort. The modern slim fit through the thigh and leg provides a tailored look that's perfect for any occasion.",
+                features: [
+                    "98% Cotton, 2% Elastane for stretch",
+                    "Slim fit through thigh and leg",
+                    "Five-pocket styling",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://products.blains.com/100/125/1255482-3.webp",
+                    "https://products.blains.com/100/125/1255482-2.webp",
+                    "https://products.blains.com/100/125/1255482.webp"
+                ]
+            },
+            { 
+                id: 9, 
+                title: "Cowboy Cut Regular Fit Jean", 
+                price: 49.99, 
+                originalPrice: 69.99, 
+                category: "jeans", 
+                rating: 4.2, 
+                reviews: 95, 
+                badge: "sale", 
+                image: "https://products.blains.com/600/152/1525026.webp", 
+                dateAdded: "2023-06-20", 
+                sales: 278,
+                description: "Classic black skinny jeans with a comfortable stretch fabric that moves with you. Perfect for creating sleek, monochromatic looks or pairing with bold colors.",
+                features: [
+                    "95% Cotton, 5% Elastane",
+                    "Skinny fit throughout",
+                    "Low-rise waist",
+                    "Five-pocket styling",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://products.blains.com/100/152/1525026-3.webp",
+                    "https://products.blains.com/100/152/1525026-4.webp",
+                    "https://products.blains.com/100/152/1525026.webp"
+                ]
+            },
+            // Shirts (10 items)
+            { 
+                id: 6, 
+                title: "Premium Oxford Shirt", 
+                price: 49.99, 
+                originalPrice: 64.99, 
+                category: "shirts", 
+                rating: 4.8, 
+                reviews: 342, 
+                badge: "bestseller", 
+                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop", 
+                dateAdded: "2023-03-22", 
+                sales: 587,
+                description: "Classic Oxford shirt made from premium cotton with a refined texture. The perfect balance between casual and dressy, suitable for both office and weekend wear.",
+                features: [
+                    "100% Premium cotton Oxford cloth",
+                    "Button-down collar",
+                    "Regular fit",
+                    "Single chest pocket",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 7, 
+                title: "Linen Blend Casual Shirt", 
+                price: 39.99, 
+                category: "shirts", 
+                rating: 4.5, 
+                reviews: 187, 
+                badge: "trending", 
+                image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop", 
+                dateAdded: "2023-07-15", 
+                sales: 324,
+                description: "Breathable linen-cotton blend shirt perfect for warm weather. The relaxed fit and natural wrinkles give it an effortlessly stylish look.",
+                features: [
+                    "55% Linen, 45% Cotton",
+                    "Relaxed fit",
+                    "Button-down collar",
+                    "Short sleeves",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 8, 
+                title: "Slim Fit Dress Shirt", 
+                price: 44.99, 
+                category: "shirts", 
+                rating: 4.6, 
+                reviews: 231, 
+                badge: null, 
+                image: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop", 
+                dateAdded: "2023-05-30", 
+                sales: 412,
+                description: "Slim fit dress shirt with a tailored silhouette that flatters without being restrictive. Made from smooth poplin fabric that resists wrinkles.",
+                features: [
+                    "100% Cotton poplin",
+                    "Slim fit",
+                    "Spread collar",
+                    "French cuffs",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 9, 
+                title: "Plaid Flannel Shirt", 
+                price: 34.99, 
+                originalPrice: 49.99, 
+                category: "shirts", 
+                rating: 4.3, 
+                reviews: 156, 
+                badge: "sale", 
+                image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop", 
+                dateAdded: "2023-09-10", 
+                sales: 287,
+                description: "Classic plaid flannel shirt with a soft brushed interior for warmth and comfort. The perfect layering piece for cooler weather.",
+                features: [
+                    "100% Cotton flannel",
+                    "Regular fit",
+                    "Button-down collar",
+                    "Long sleeves",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 10, 
+                title: "Denim Chambray Shirt", 
+                price: 42.99, 
+                category: "shirts", 
+                rating: 4.4, 
+                reviews: 198, 
+                badge: "new", 
+                image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=600&fit=crop", 
+                dateAdded: "2023-10-05", 
+                sales: 231,
+                description: "Versatile denim chambray shirt that works as both a shirt and light jacket. The medium wash pairs well with everything from chinos to jeans.",
+                features: [
+                    "100% Cotton chambray",
+                    "Regular fit",
+                    "Point collar",
+                    "Long sleeves with button cuffs",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 6, 
+                title: "Premium Oxford Shirt", 
+                price: 49.99, 
+                originalPrice: 64.99, 
+                category: "shirts", 
+                rating: 4.8, 
+                reviews: 342, 
+                badge: "bestseller", 
+                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop", 
+                dateAdded: "2023-03-22", 
+                sales: 587,
+                description: "Classic Oxford shirt made from premium cotton with a refined texture. The perfect balance between casual and dressy, suitable for both office and weekend wear.",
+                features: [
+                    "100% Premium cotton Oxford cloth",
+                    "Button-down collar",
+                    "Regular fit",
+                    "Single chest pocket",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 7, 
+                title: "Linen Blend Casual Shirt", 
+                price: 39.99, 
+                category: "shirts", 
+                rating: 4.5, 
+                reviews: 187, 
+                badge: "trending", 
+                image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop", 
+                dateAdded: "2023-07-15", 
+                sales: 324,
+                description: "Breathable linen-cotton blend shirt perfect for warm weather. The relaxed fit and natural wrinkles give it an effortlessly stylish look.",
+                features: [
+                    "55% Linen, 45% Cotton",
+                    "Relaxed fit",
+                    "Button-down collar",
+                    "Short sleeves",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 8, 
+                title: "Slim Fit Dress Shirt", 
+                price: 44.99, 
+                category: "shirts", 
+                rating: 4.6, 
+                reviews: 231, 
+                badge: null, 
+                image: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop", 
+                dateAdded: "2023-05-30", 
+                sales: 412,
+                description: "Slim fit dress shirt with a tailored silhouette that flatters without being restrictive. Made from smooth poplin fabric that resists wrinkles.",
+                features: [
+                    "100% Cotton poplin",
+                    "Slim fit",
+                    "Spread collar",
+                    "French cuffs",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 9, 
+                title: "Plaid Flannel Shirt", 
+                price: 34.99, 
+                originalPrice: 49.99, 
+                category: "shirts", 
+                rating: 4.3, 
+                reviews: 156, 
+                badge: "sale", 
+                image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop", 
+                dateAdded: "2023-09-10", 
+                sales: 287,
+                description: "Classic plaid flannel shirt with a soft brushed interior for warmth and comfort. The perfect layering piece for cooler weather.",
+                features: [
+                    "100% Cotton flannel",
+                    "Regular fit",
+                    "Button-down collar",
+                    "Long sleeves",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 10, 
+                title: "Denim Chambray Shirt", 
+                price: 42.99, 
+                category: "shirts", 
+                rating: 4.4, 
+                reviews: 198, 
+                badge: "new", 
+                image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=600&fit=crop", 
+                dateAdded: "2023-10-05", 
+                sales: 231,
+                description: "Versatile denim chambray shirt that works as both a shirt and light jacket. The medium wash pairs well with everything from chinos to jeans.",
+                features: [
+                    "100% Cotton chambray",
+                    "Regular fit",
+                    "Point collar",
+                    "Long sleeves with button cuffs",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop"
+                ]
+            },
+            // Suits (5 items)
+            { 
+                id: 6, 
+                title: "Premium Oxford Shirt", 
+                price: 49.99, 
+                originalPrice: 64.99, 
+                category: "shirts", 
+                rating: 4.8, 
+                reviews: 342, 
+                badge: "bestseller", 
+                image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop", 
+                dateAdded: "2023-03-22", 
+                sales: 587,
+                description: "Classic Oxford shirt made from premium cotton with a refined texture. The perfect balance between casual and dressy, suitable for both office and weekend wear.",
+                features: [
+                    "100% Premium cotton Oxford cloth",
+                    "Button-down collar",
+                    "Regular fit",
+                    "Single chest pocket",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 7, 
+                title: "Linen Blend Casual Shirt", 
+                price: 39.99, 
+                category: "shirts", 
+                rating: 4.5, 
+                reviews: 187, 
+                badge: "trending", 
+                image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop", 
+                dateAdded: "2023-07-15", 
+                sales: 324,
+                description: "Breathable linen-cotton blend shirt perfect for warm weather. The relaxed fit and natural wrinkles give it an effortlessly stylish look.",
+                features: [
+                    "55% Linen, 45% Cotton",
+                    "Relaxed fit",
+                    "Button-down collar",
+                    "Short sleeves",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 8, 
+                title: "Slim Fit Dress Shirt", 
+                price: 44.99, 
+                category: "shirts", 
+                rating: 4.6, 
+                reviews: 231, 
+                badge: null, 
+                image: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop", 
+                dateAdded: "2023-05-30", 
+                sales: 412,
+                description: "Slim fit dress shirt with a tailored silhouette that flatters without being restrictive. Made from smooth poplin fabric that resists wrinkles.",
+                features: [
+                    "100% Cotton poplin",
+                    "Slim fit",
+                    "Spread collar",
+                    "French cuffs",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 9, 
+                title: "Plaid Flannel Shirt", 
+                price: 34.99, 
+                originalPrice: 49.99, 
+                category: "shirts", 
+                rating: 4.3, 
+                reviews: 156, 
+                badge: "sale", 
+                image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop", 
+                dateAdded: "2023-09-10", 
+                sales: 287,
+                description: "Classic plaid flannel shirt with a soft brushed interior for warmth and comfort. The perfect layering piece for cooler weather.",
+                features: [
+                    "100% Cotton flannel",
+                    "Regular fit",
+                    "Button-down collar",
+                    "Long sleeves",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 10, 
+                title: "Denim Chambray Shirt", 
+                price: 42.99, 
+                category: "shirts", 
+                rating: 4.4, 
+                reviews: 198, 
+                badge: "new", 
+                image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=600&fit=crop", 
+                dateAdded: "2023-10-05", 
+                sales: 231,
+                description: "Versatile denim chambray shirt that works as both a shirt and light jacket. The medium wash pairs well with everything from chinos to jeans.",
+                features: [
+                    "100% Cotton chambray",
+                    "Regular fit",
+                    "Point collar",
+                    "Long sleeves with button cuffs",
+                    "Machine wash cold"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 11, 
+                title: "Classic Navy Suit", 
+                price: 299.99, 
+                originalPrice: 399.99, 
+                category: "suits", 
+                rating: 4.9, 
+                reviews: 187, 
+                badge: "bestseller", 
+                image: "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=600&h=600&fit=crop", 
+                dateAdded: "2023-02-18", 
+                sales: 342,
+                description: "Timeless navy suit crafted from premium wool blend fabric. The tailored fit provides a sharp silhouette that's appropriate for business and formal occasions.",
+                features: [
+                    "70% Wool, 28% Polyester, 2% Elastane",
+                    "Tailored fit",
+                    "Notch lapel",
+                    "Two-button jacket",
+                    "Dry clean only"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1539533018447-63fcce2678e2?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 12, 
+                title: "Slim Fit Charcoal Suit", 
+                price: 349.99, 
+                category: "suits", 
+                rating: 4.7, 
+                reviews: 134, 
+                badge: null, 
+                image: "https://images.unsplash.com/photo-1539533018447-63fcce2678e2?w=600&h=600&fit=crop", 
+                dateAdded: "2023-04-22", 
+                sales: 198,
+                description: "Modern slim fit charcoal suit with a contemporary cut that's sleek without being restrictive. The perfect choice for weddings, interviews, and important events.",
+                features: [
+                    "Super 120s wool",
+                    "Slim fit",
+                    "Peak lapel",
+                    "Two-button jacket",
+                    "Dry clean only"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1539533018447-63fcce2678e2?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=600&fit=crop"
+                ]
+            },
+            // Accessories (5 items)
+            { 
+                id: 13, 
+                title: "Genuine Leather Belt", 
+                price: 39.99, 
+                originalPrice: 59.99, 
+                category: "accessories", 
+                rating: 4.6, 
+                reviews: 276, 
+                badge: "sale", 
+                image: "https://images.unsplash.com/photo-1617137968427-8599c7ab6f01?w=600&h=600&fit=crop", 
+                dateAdded: "2023-01-15", 
+                sales: 512,
+                description: "Classic genuine leather belt with a polished buckle that pairs perfectly with both casual and dress outfits. The full-grain leather develops a beautiful patina over time.",
+                features: [
+                    "100% Genuine leather",
+                    "1.5\" width",
+                    "Brushed nickel buckle",
+                    "Adjustable sizing",
+                    "Wipe clean with damp cloth"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1617137968427-8599c7ab6f01?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&h=600&fit=crop"
+                ]
+            },
+            { 
+                id: 14, 
+                title: "Silk Pocket Square Set", 
+                price: 24.99, 
+                category: "accessories", 
+                rating: 4.4, 
+                reviews: 143, 
+                badge: "new", 
+                image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=600&fit=crop", 
+                dateAdded: "2023-11-05", 
+                sales: 187,
+                description: "Set of three premium silk pocket squares in versatile patterns and colors. The perfect finishing touch to elevate any suit or blazer.",
+                features: [
+                    "100% Silk",
+                    "Set of 3 (solid, patterned, paisley)",
+                    "12\" x 12\" size",
+                    "Hand-rolled edges",
+                    "Dry clean only"
+                ],
+                images: [
+                    "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1617137968427-8599c7ab6f01?w=600&h=600&fit=crop",
+                    "https://images.unsplash.com/photo-1539533018447-63fcce2678e2?w=600&h=600&fit=crop"
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const trendingProductsEl = document.getElementById('trending-products');
+        const newArrivalsProductsEl = document.getElementById('new-arrivals-products');
+        const bestsellerProductsEl = document.getElementById('bestseller-products');
+        const featuredProductsEl = document.getElementById('featured-products');
+        const productModal = document.getElementById('productModal');
+        const modalBody = document.getElementById('modalBody');
+        const modalClose = document.getElementById('modalClose');
+        const scrollTopBtn = document.getElementById('scrollTop');
+        const seeMoreBtns = document.querySelectorAll('.see-more-btn');
+        const sortBySelect = document.getElementById('sort-by');
+        const filterCategorySelect = document.getElementById('filter-category');
+        const filterPriceSelect = document.getElementById('filter-price');
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load products into sections
+            loadSectionProducts('trending', trendingProductsEl, 8);
+            loadSectionProducts('new-arrivals', newArrivalsProductsEl, 8);
+            loadSectionProducts('bestsellers', bestsellerProductsEl, 8);
+            loadSectionProducts('featured', featuredProductsEl, 8);
+
+            // Set up event listeners
+            setupEventListeners();
+        });
+
+        // Load products into a section
+        function loadSectionProducts(section, element, initialCount) {
+            let filteredProducts = [];
+            
+            switch(section) {
+                case 'trending':
+                    filteredProducts = products.filter(p => p.badge === 'trending' || p.rating >= 4.5);
+                    break;
+                case 'new-arrivals':
+                    filteredProducts = products.sort((a,b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+                case 'bestsellers':
+                    filteredProducts = products.sort((a,b) => b.sales - a.sales);
+                    break;
+                case 'featured':
+                    filteredProducts = products.filter(p => p.badge === 'bestseller' || p.badge === 'new' || p.originalPrice);
+                    break;
+            }
+
+            // Display initial products
+            displayProducts(filteredProducts.slice(0, initialCount), element);
+
+            // Store full product list for section
+            element.dataset.allProducts = JSON.stringify(filteredProducts);
+            element.dataset.showingCount = initialCount;
+        }
+
+        // Display products in a grid
+        function displayProducts(productsToShow, element) {
+            element.innerHTML = '';
+            
+            productsToShow.forEach(product => {
+                const productEl = createProductCard(product);
+                element.appendChild(productEl);
+            });
+        }
+
+        // Create product card HTML
+        function createProductCard(product) {
+            const productEl = document.createElement('div');
+            productEl.className = 'product-card';
+            productEl.dataset.id = product.id;
+            
+            let badgeHTML = '';
+            if (product.badge) {
+                const badgeClass = `badge-${product.badge}`;
+                badgeHTML = `<span class="product-badge ${badgeClass}">${product.badge}</span>`;
+            }
+            
+            let originalPriceHTML = '';
+            let discountHTML = '';
+            if (product.originalPrice) {
+                const discountPercent = Math.round((1 - product.price / product.originalPrice) * 100);
+                originalPriceHTML = `<span class="original-price">$${product.originalPrice.toFixed(2)}</span>`;
+                discountHTML = `<span class="discount">${discountPercent}% OFF</span>`;
+            }
+            
+            productEl.innerHTML = `
+                ${badgeHTML}
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.title}">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">${product.title}</h3>
+                    <div class="product-price">
+                        <span class="current-price">$${product.price.toFixed(2)}</span>
+                        ${originalPriceHTML}
+                        ${discountHTML}
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            ${createStarRating(product.rating)}
+                        </div>
+                        <span class="rating-count">(${product.reviews})</span>
+                    </div>
+                    <button class="add-to-cart">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            `;
+            
+            return productEl;
+        }
+
+        // Create star rating HTML
+        function createStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            
+            return stars;
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Product click to open modal
+            document.addEventListener('click', function(e) {
+                const productCard = e.target.closest('.product-card');
+                if (productCard) {
+                    const productId = parseInt(productCard.dataset.id);
+                    const product = products.find(p => p.id === productId);
+                    openProductModal(product);
+                }
+            });
+
+            // Modal close
+            modalClose.addEventListener('click', closeProductModal);
+            productModal.addEventListener('click', function(e) {
+                if (e.target === productModal) {
+                    closeProductModal();
+                }
+            });
+
+            // See more/less buttons
+            seeMoreBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    toggleSeeMore(this);
+                });
+            });
+
+            // Filter/sort changes
+            sortBySelect.addEventListener('change', applyFilters);
+            filterCategorySelect.addEventListener('change', applyFilters);
+            filterPriceSelect.addEventListener('change', applyFilters);
+
+            // Scroll to top button
+            window.addEventListener('scroll', toggleScrollTopButton);
+            scrollTopBtn.addEventListener('click', scrollToTop);
+        }
+
+        // Open product modal
+        function openProductModal(product) {
+            // Create thumbnail images
+            let thumbnailsHTML = '';
+            product.images.forEach((img, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                thumbnailsHTML += `
+                    <img src="${img}" class="thumbnail ${activeClass}" data-index="${index}">
+                `;
+            });
+
+            // Create features list
+            let featuresHTML = '';
+            product.features.forEach(feature => {
+                featuresHTML += `<li>${feature}</li>`;
+            });
+
+            // Set modal content
+            modalBody.innerHTML = `
+                <div class="modal-images">
+                    <img src="${product.images[0]}" class="main-image">
+                    <div class="thumbnail-container">
+                        ${thumbnailsHTML}
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h2 class="modal-title">${product.title}</h2>
+                    <div class="modal-price">
+                        ${product.originalPrice ? 
+                            `<span class="modal-original-price">$${product.originalPrice.toFixed(2)}</span>` : ''}
+                        <span>$${product.price.toFixed(2)}</span>
+                        ${product.originalPrice ? 
+                            `<span class="modal-discount">${Math.round((1 - product.price / product.originalPrice) * 100)}% OFF</span>` : ''}
+                    </div>
+                    <div class="modal-rating">
+                        <div class="modal-stars">
+                            ${createStarRating(product.rating)}
+                        </div>
+                        <span class="modal-reviews">${product.reviews} reviews</span>
+                    </div>
+                    <p class="modal-description">${product.description}</p>
+                    <div class="modal-features">
+                        <h3>Features</h3>
+                        <ul>
+                            ${featuresHTML}
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="modal-btn modal-btn-primary">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </button>
+                        <button class="modal-btn modal-btn-secondary">
+                            <i class="far fa-heart"></i> Wishlist
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Set up thumbnail click events
+            const thumbnails = modalBody.querySelectorAll('.thumbnail');
+            const mainImage = modalBody.querySelector('.main-image');
+            
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    // Update active thumbnail
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update main image
+                    const imgIndex = parseInt(this.dataset.index);
+                    mainImage.src = product.images[imgIndex];
+                });
+            });
+
+            // Show modal
+            productModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close product modal
+        function closeProductModal() {
+            productModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Toggle see more/less
+        function toggleSeeMore(button) {
+            const section = button.dataset.section;
+            const sectionEl = document.getElementById(`${section}-products`);
+            const allProducts = JSON.parse(sectionEl.dataset.allProducts);
+            const currentShowing = parseInt(sectionEl.dataset.showingCount);
+            
+            if (button.textContent.includes('All')) {
+                // Show all products
+                displayProducts(allProducts, sectionEl);
+                button.textContent = 'See Less';
+                sectionEl.dataset.showingCount = allProducts.length;
+            } else {
+                // Show initial count
+                const initialCount = section === 'trending' ? 8 : 8;
+                displayProducts(allProducts.slice(0, initialCount), sectionEl);
+                button.textContent = 'See All';
+                sectionEl.dataset.showingCount = initialCount;
+            }
+        }
+
+        // Apply filters and sorting
+        function applyFilters() {
+            const category = filterCategorySelect.value;
+            const priceRange = filterPriceSelect.value;
+            const sortBy = sortBySelect.value;
+            
+            // Filter by category
+            let filteredProducts = products;
+            if (category !== 'all') {
+                filteredProducts = filteredProducts.filter(p => p.category === category);
+            }
+            
+            // Filter by price
+            if (priceRange !== 'all') {
+                const [min, max] = priceRange.split('-').map(Number);
+                if (priceRange.endsWith('+')) {
+                    filteredProducts = filteredProducts.filter(p => p.price >= min);
+                } else {
+                    filteredProducts = filteredProducts.filter(p => p.price >= min && p.price <= max);
+                }
+            }
+            
+            // Sort products
+            switch(sortBy) {
+                case 'price-low':
+                    filteredProducts.sort((a,b) => a.price - b.price);
+                    break;
+                case 'price-high':
+                    filteredProducts.sort((a,b) => b.price - a.price);
+                    break;
+                case 'rating':
+                    filteredProducts.sort((a,b) => b.rating - a.rating);
+                    break;
+                case 'newest':
+                    filteredProducts.sort((a,b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+                default:
+                    // Default sorting (trending/bestsellers)
+                    break;
+            }
+            
+            // Update all sections
+            updateAllSections(filteredProducts);
+        }
+
+        // Update all sections with filtered products
+        function updateAllSections(filteredProducts) {
+            // For trending section
+            const trendingProducts = filteredProducts.filter(p => p.badge === 'trending' || p.rating >= 4.5);
+            displayProducts(trendingProducts.slice(0, 8), trendingProductsEl);
+            trendingProductsEl.dataset.allProducts = JSON.stringify(trendingProducts);
+            
+            // For new arrivals
+            const newArrivals = [...filteredProducts].sort((a,b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+            displayProducts(newArrivals.slice(0, 8), newArrivalsProductsEl);
+            newArrivalsProductsEl.dataset.allProducts = JSON.stringify(newArrivals);
+            
+            // For bestsellers
+            const bestsellers = [...filteredProducts].sort((a,b) => b.sales - a.sales);
+            displayProducts(bestsellers.slice(0, 8), bestsellerProductsEl);
+            bestsellerProductsEl.dataset.allProducts = JSON.stringify(bestsellers);
+            
+            // For featured
+            const featured = filteredProducts.filter(p => p.badge === 'bestseller' || p.badge === 'new' || p.originalPrice);
+            displayProducts(featured.slice(0, 8), featuredProductsEl);
+            featuredProductsEl.dataset.allProducts = JSON.stringify(featured);
+        }
+
+        // Toggle scroll to top button
+        function toggleScrollTopButton() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
