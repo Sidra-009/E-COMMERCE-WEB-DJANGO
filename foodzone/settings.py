@@ -4,6 +4,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-your-secret-key-here'  # Change this in production!
 
@@ -64,16 +65,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'foodzone.wsgi.application'
 
 # Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'cartifyweb',
+#         'USER':'root',
+#         'PASSWORD':'Sidra@12345_6789',
+#         'HOST':'127.0.0.1',
+#         'PORT':'3306'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cartifyweb',
-        'USER':'root',
-        'PASSWORD':'Sidra@12345_6789',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
 
 
 # Password validation

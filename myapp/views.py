@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 from cart.cart import Cart
-from .forms import CartAddProductForm
+from .forms import CartAddProductForm, CustomUserCreationForm
 from shop.models import Product
 
 def home(request):
@@ -88,8 +89,8 @@ def checkout(request):
     return render(request, 'checkout.html')  # Make sure you have this template
 
 
-def register(request):
-    return render(request, 'register.html')  # Ensure this template exists
+# def register(request):
+#     return render(request, 'register.html')  # Ensure this template exists
 
 
 def login_view(request):
@@ -111,9 +112,9 @@ def about(request):
     return render(request, 'about.html')  # Make sure this template exists
 
 
-def home(request):
-    # your code here
-    return render(request, 'index.html')  # example
+# def home(request):
+#     # your code here
+#     return render(request, 'index.html')  # example
 
 
 @require_POST
@@ -268,24 +269,24 @@ def smart_phones_view(request):
     return render(request, 'electronics/smart_phones.html', context)
 
 # Home Page View
-def home(request):
-    """Main homepage view"""
-    context = {
-        'featured_categories': [
-            {'name': 'Electronics', 'url': 'myapp:phones'},
-            {'name': 'Sports', 'url': 'myapp:sports'},
-            # Add more categories as needed
-        ]
-    }
-    return render(request, 'index.html', context)
+# def home(request):
+#     """Main homepage view"""
+#     context = {
+#         'featured_categories': [
+#             {'name': 'Electronics', 'url': 'myapp:phones'},
+#             {'name': 'Sports', 'url': 'myapp:sports'},
+#             # Add more categories as needed
+#         ]
+#     }
+#     return render(request, 'index.html', context)
 def home_living(request):
     """Main Home & Living category page"""
     return render(request, 'home_living/home_living.html')
 
 
-def home(request):
-    # Your existing home view logic
-    return render(request, 'index.html')
+# def home(request):
+#     # Your existing home view logic
+#     return render(request, 'index.html')
 
 def beauty(request):
     return render(request, 'beauty.html')  # You'll need to create this template
@@ -302,14 +303,34 @@ def haircare(request):
 def vitamins(request):
     return render(request, 'vitamins.html')  # Create this template
 
-def register(request):
+
+
+def register_view(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            return redirect('login')  # Make sure 'login' is a valid URL name
-    else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        if password != confirm_password:
+            messages.error(request, 'Passwords do not match.')
+            return redirect('myapp:register')
+
+        if User.objects.filter(username=email).exists():
+            messages.error(request, 'User already exists.')
+            return redirect('myapp:register')
+
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name
+        )
+        user.save()
+
+        messages.success(request, 'Account created successfully!')
+        return redirect('myapp:login')
+
+    return render(request, 'registerPage.html')
