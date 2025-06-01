@@ -51,8 +51,9 @@ urlpatterns = [
     path('new-arrivals/', views.new_arrivals, name='new_arrivals'),
 
     # User accounts (updated paths)
-    path('login/', views.login_view, name='login'),  # Simplified path
-    path('register/', views.register, name='register'),  # Simplified path
+    path('login/', views.login_view, name='login'), 
+    path('register/', views.register_view, name='register'),
+    
 
     # Checkout and legal
     path('checkout/', views.checkout, name='checkout'),
